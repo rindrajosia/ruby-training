@@ -20,6 +20,17 @@ class App
     end
   end
 
+  def list_all_people
+    if @people.length.positive?
+      @people.each { |person| puts "Id: #{person.id}, Name: #{person.name}, Age: #{person.age}" }
+    else
+      puts "No person available!"
+    end
+  end
+
+
+  
+
 
 
 
