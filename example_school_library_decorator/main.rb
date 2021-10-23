@@ -28,8 +28,33 @@ class App
     end
   end
 
+  def create_person
 
-  
+    puts "To create a Student, Press 1"
+    puts "To create a Teacher, Press 2"
+    option = gets.chomp
+
+    if option != "1" || option != "2"
+      puts "Please choose between 1 and 2"
+      return
+    end
+
+    case option
+    when "1"
+      puts "Enter Name: "
+      name = gets.chomp
+
+      puts "Assign parent permission? [y/n]: "
+      permission = gets.chop
+
+      @people = Student.new(name, permission)
+      puts "Student has been created successfully"
+
+  end
+
+
+
+
 
 
 
