@@ -12,6 +12,14 @@ class App
     @rentals = []
   end
 
+  def list_all_books
+    if @books.length.positive?
+      @books.each { |bk| puts "Title: #{bk.title}, Author: #{bk.author}" }
+    else
+      puts "No books available!"
+    end
+  end
+
 
 
 
