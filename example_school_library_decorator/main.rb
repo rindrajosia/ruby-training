@@ -41,7 +41,7 @@ class App
 
     case option
     when "1"
-      puts "Enter Name: "
+      puts "Give Name: "
       name = gets.chomp
 
       puts "Assign parent permission? [y/n]: "
@@ -49,6 +49,17 @@ class App
 
       @people = Student.new(name, permission)
       puts "Student has been created successfully"
+
+    when "2"
+      puts "Give Name: "
+      name = gets.chomp
+
+      puts "Enter age: "
+      age = gets.chomp
+
+      @people = Person.new(name, age)
+      puts "Teacher has been created successfully"
+    end
 
   end
 
