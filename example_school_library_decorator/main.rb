@@ -47,21 +47,35 @@ class App
       puts "Assign parent permission? [y/n]: "
       permission = gets.chop
 
-      @people = Student.new(name, permission)
+      @people << Student.new(name, permission)
       puts "Student has been created successfully"
 
     when "2"
-      puts "Give Name: "
+      puts "Give name: "
       name = gets.chomp
 
       puts "Enter age: "
       age = gets.chomp
 
-      @people = Person.new(name, age)
+      @people << Teacher.new(name, age)
       puts "Teacher has been created successfully"
     end
-
   end
+
+  def create_book
+    puts "Give title: "
+    title = gets.chomp
+
+    puts "Author: "
+    author = gets.chomp
+
+    @books << Book.new(title, author)
+    puts "Book has been created successfully"
+  end
+
+  def 
+
+  
 
 
 
