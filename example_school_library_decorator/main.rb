@@ -44,20 +44,27 @@ class App
       print 'Give Name: '
       name = gets.chomp
 
-      print 'Assign parent permission? [y/n]: '
-      permission = gets.chop
+      print 'Age: '
+      age = gets.chomp
 
-      @people << Student.new(name, permission)
+      print 'Assign parent permission? [Y/N]: '
+      permission = gets.chomp
+      permission.downcase == 'y'
+
+      @people << Student.new(age, name, permission)
       puts 'Student has been created successfully'
 
     when '2'
       print 'Give name: '
       name = gets.chomp
 
-      print 'Enter age: '
+      print 'Age: '
       age = gets.chomp
 
-      @people << Teacher.new(name, age)
+      print 'Specialization: '
+      specialization = gets.chomp
+
+      @people << Teacher.new(age, specialization, name )
       puts 'Teacher has been created successfully'
     end
   end
@@ -76,13 +83,13 @@ class App
   def create_rental
     puts 'Pick a book from the list below using it number on the list:'
     @books.each_with_index do |bk, index|
-      puts "#{index}. Title: #{bk.title}, Author: #{bk.author}"
+      puts "#{index}) Title: #{bk.title}, Author: #{bk.author}"
     end
-    picked_bk = gets.chop.to_i
+    picked_bk = gets.chomp.to_i
 
     puts "\nChoose a person from the list below using their number on the list:"
     @people.each_with_index do |person, index|
-      puts "#{index}. [#{person.class}] Name: #{person.name}, Age: #{person.age}, Id: #{person.id}"
+      puts "#{index}) [#{person.class}] Name: #{person.name}, Age: #{person.age}, Id: #{person.id}"
     end
     picked_person = gets.chomp.to_i
 
@@ -95,12 +102,12 @@ class App
 
   def list_all_rentals
     print 'Enter Id: '
-    id = gets.chomp
+    id = gets.chomp.to_i
 
     all_rentals = @rentals.filter { |rental| rental.person.id == id }
     puts 'Rentals:'
     all_rentals.each do |rental|
-      puts "Book: '#{rental.book.title}' by #{rental.book.author}, date: #{rental.date}"
+      puts "Book: #{rental.book.title} by #{rental.book.author}, date: #{rental.date}"
     end
   end
 end
@@ -143,7 +150,7 @@ def main
       app.list_all_rentals
 
     when '7'
-      puts "Thank you! We'd wish to serve you again"
+      puts "Thank you! We'd love to serve you again"
     end
     puts "\n"
   end
