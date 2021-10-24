@@ -41,20 +41,20 @@ class App
 
     case option
     when "1"
-      puts "Give Name: "
+      print "Give Name: "
       name = gets.chomp
 
-      puts "Assign parent permission? [y/n]: "
+      print "Assign parent permission? [y/n]: "
       permission = gets.chop
 
       @people << Student.new(name, permission)
       puts "Student has been created successfully"
 
     when "2"
-      puts "Give name: "
+      print "Give name: "
       name = gets.chomp
 
-      puts "Enter age: "
+      print "Enter age: "
       age = gets.chomp
 
       @people << Teacher.new(name, age)
@@ -63,10 +63,10 @@ class App
   end
 
   def create_book
-    puts "Give title: "
+    print "Give title: "
     title = gets.chomp
 
-    puts "Author: "
+    print "Author: "
     author = gets.chomp
 
     @books << Book.new(title, author)
@@ -82,15 +82,26 @@ class App
 
     puts "\nChoose a person from the list below using their number on the list:"
     @people.each_with_index do |person, index| 
-      puts "#{index}. Name: #{person.name}, Age: #{person.age}, Id: #{person.id}"
+      puts "#{index}. [#{person.class}] Name: #{person.name}, Age: #{person.age}, Id: #{person.id}"
     end
     picked_person = gets.chomp.to_i
 
-    puts "Enter the date today:"
+    print "Enter the date today:"
     date = gets.chomp
 
     @rentals << Rental.new(date, @books[picked_bk], @people[picked_person])
     puts "Rental has been created successfully"
+  end
+
+  def list_all_rentals
+    print "Enter Id: "
+    id = gets.chomp
+
+    all_rentals = @rentals.filter { |rental| rental.person.id == id }
+    puts "Rentals:"
+    all_rentals.each do |rental|
+      puts "Book: '#{rental.book.title}' by #{rental.book.author}, date: #{rental.date}"
+    end
   end
 
   
