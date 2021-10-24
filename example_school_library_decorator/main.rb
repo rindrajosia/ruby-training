@@ -73,7 +73,25 @@ class App
     puts "Book has been created successfully"
   end
 
-  def 
+  def create_rental
+    puts "Pick a book from the list below using it number on the list:"
+    @books.each_with_index do |bk, index|
+      puts "#{index}. Title: #{bk.title}, Author: #{bk.author}"
+    end
+    picked_bk = gets.chop.to_i
+
+    puts "\nChoose a person from the list below using their number on the list:"
+    @people.each_with_index do |person, index| 
+      puts "#{index}. Name: #{person.name}, Age: #{person.age}, Id: #{person.id}"
+    end
+    picked_person = gets.chomp.to_i
+
+    puts "Enter the date today:"
+    date = gets.chomp
+
+    @rentals << Rental.new(date, @books[picked_bk], @people[picked_person])
+    puts "Rental has been created successfully"
+  end
 
   
 
