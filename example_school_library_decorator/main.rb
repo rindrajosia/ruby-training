@@ -64,7 +64,7 @@ class App
       print 'Specialization: '
       specialization = gets.chomp
 
-      @people << Teacher.new(age, specialization, name )
+      @people << Teacher.new(age, specialization, name)
       puts 'Teacher has been created successfully'
     end
   end
