@@ -116,9 +116,8 @@ def main
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
     print 'Add your selection'
-
     entry = gets.chomp
-    
+
     case entry
     when '1'
       app.list_all_books
