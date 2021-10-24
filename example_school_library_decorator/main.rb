@@ -34,7 +34,7 @@ class App
     puts 'To create a Teacher, Press 2'
     option = gets.chomp
 
-    if option != '1' || option != '2'
+    if option != '1' && option != '2'
       puts 'Please choose between 1 and 2'
       return
     end
