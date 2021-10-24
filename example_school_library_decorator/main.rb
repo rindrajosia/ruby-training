@@ -49,7 +49,6 @@ class App
 
       print 'Assign parent permission? [Y/N]: '
       permission = gets.chomp
-      permission.downcase == 'y'
 
       @people << Student.new(age, name, permission)
       puts 'Student has been created successfully'
