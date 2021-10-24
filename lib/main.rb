@@ -13,6 +13,11 @@ class App
     @rentals = []
   end
 
+  def prompt(message)
+    print message
+    gets.chomp
+  end
+
   def list_all_books
     if @books.length.positive?
       @books.each { |bk| puts "Title: #{bk.title}, Author: #{bk.author}" }
@@ -30,23 +35,18 @@ class App
   end
 
   def create_person
-    puts 'To create a Student, Press 1'
-    puts 'To create a Teacher, Press 2'
-    option = gets.chomp
+    option = prompt('To create a Student, Press 1 and To create a Teacher, Press 2')
 
     if option != '1' && option != '2'
       puts 'Please choose between 1 and 2'
       return
     end
 
+    name = prompt('Give Name: ')
+    age = prompt('Age: ')
+
     case option
     when '1'
-      print 'Give Name: '
-      name = gets.chomp
-
-      print 'Age: '
-      age = gets.chomp
-
       print 'Assign parent permission? [Y/N]: '
       permission = gets.chomp
 
@@ -54,12 +54,6 @@ class App
       puts 'Student has been created successfully'
 
     when '2'
-      print 'Give name: '
-      name = gets.chomp
-
-      print 'Age: '
-      age = gets.chomp
-
       print 'Specialization: '
       specialization = gets.chomp
 
@@ -69,11 +63,8 @@ class App
   end
 
   def create_book
-    print 'Give title: '
-    title = gets.chomp
-
-    print 'Author: '
-    author = gets.chomp
+    title = prompt('Give title: ')
+    author = prompt('Author: ')
 
     @books << Book.new(title, author)
     puts 'Book has been created successfully'
@@ -92,8 +83,7 @@ class App
     end
     picked_person = gets.chomp.to_i
 
-    print 'Enter the date today:'
-    date = gets.chomp
+    date = prompt('Enter the date today: ')
 
     @rentals << Rental.new(date, @books[picked_bk], @people[picked_person])
     puts 'Rental has been created successfully'
@@ -126,9 +116,9 @@ def main
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
     print 'Add your selection'
-    print ' '
-    entry = gets.chomp
 
+    entry = gets.chomp
+    
     case entry
     when '1'
       app.list_all_books
